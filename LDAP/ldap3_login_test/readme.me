@@ -1,0 +1,13 @@
+django-admin startproject ldap3_login_test #新增專案
+cd ldap3_login_test
+django-admin  startapp authldap#新增app
+python manage.py #migrate 也可先將DB設定到其它資料庫再 migrate
+
+
+#app ad authbackends.py
+
+最後在 settings.py 新增以下
+AUTHENTICATION_BACKENDS = [
+    'authldap.authbackends.LdapBackend',
+    'django.contrib.auth.backends.ModelBackend'
+    ]
